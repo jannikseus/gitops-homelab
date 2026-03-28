@@ -11,7 +11,6 @@ spec:
         revision: main
         directories:
           - path: apps/*/prod
-          - path: infra/*/prod
   template:
     metadata:
       name: '{{ index .path.segments 1 }}-prod'
