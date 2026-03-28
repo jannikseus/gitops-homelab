@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps-prod
+  name: workloads-prod
   namespace: argocd
 spec:
   goTemplate: true
@@ -11,6 +11,7 @@ spec:
         revision: main
         directories:
           - path: apps/*/prod
+          - path: infra/*/prod
   template:
     metadata:
       name: '{{ index .path.segments 1 }}-prod'
@@ -22,7 +23,7 @@ spec:
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: apps
+        namespace: '{{ if eq (index .path.segments 0) "infra" }}{{ index .path.segments 1 }}{{ else }}apps{{ end }}'
       syncPolicy:
         automated:
           prune: true
