@@ -12,7 +12,7 @@ spec:
       helm:
         releaseName: cert-manager
         valueFiles:
-          - $values/infra/cert-manager/prod/values.yaml
+          - $values/infra/prod/cert-manager/values.yaml
     - repoURL: https://github.com/jannikseus/gitops-homelab.git
       targetRevision: main
       ref: values

@@ -13,7 +13,7 @@ spec:
           - path: apps/*/prod
   template:
     metadata:
-      name: '{{ index .path.segments 1 }}-prod'
+      name: '{{ index .path.segments 2 }}-prod'
     spec:
       project: platform
       source:
@@ -22,7 +22,6 @@ spec:
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{ if eq (index .path.segments 0) "infra" }}{{ index .path.segments 1 }}{{ else }}apps{{ end }}'
       syncPolicy:
         automated:
           prune: true

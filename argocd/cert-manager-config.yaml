@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/jannikseus/gitops-homelab.git
     targetRevision: main
-    path: infra/cert-manager-config/prod
+    path: infra/prod/cert-manager-config
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager

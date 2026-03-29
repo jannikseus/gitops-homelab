@@ -1,21 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-rollouts
+  name: namespaces
   namespace: argocd
 spec:
   project: platform
   source:
     repoURL: https://github.com/jannikseus/gitops-homelab.git
     targetRevision: main
-    path: infra/prod/argo-rollouts
+    path: infra/prod/namespaces
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo-rollouts
+    namespace: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
       - PruneLast=true
