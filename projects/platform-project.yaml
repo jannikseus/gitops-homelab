@@ -7,6 +7,7 @@ spec:
   description: Core platform workloads for the cluster
   sourceRepos:
     - 'https://github.com/jannikseus/gitops-homelab.git'
+    - 'https://charts.jetstack.io'
   destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
