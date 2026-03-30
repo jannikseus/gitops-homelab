@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: workloads-prod
+  name: apps
   namespace: argocd
 spec:
   goTemplate: true
@@ -10,10 +10,10 @@ spec:
         repoURL: https://github.com/jannikseus/gitops-homelab.git
         revision: main
         directories:
-          - path: apps/*/prod
+          - path: apps/*/*
   template:
     metadata:
-      name: '{{ index .path.segments 2 }}-prod'
+      name: '{{ index .path.segments 2 }}-{{ index .path.segments 1 }}'
     spec:
       project: platform
       source:
@@ -22,10 +22,10 @@ spec:
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
+        namespace: apps
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
           - PruneLast=true
