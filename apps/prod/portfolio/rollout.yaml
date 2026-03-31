@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/YOUR_GITHUB_USER/portfolio:latest
+          image: ghcr.io/jannikseus/portfolio:latest
           imagePullPolicy: Always
           ports:
             - name: http
