@@ -8,7 +8,7 @@ spec:
   sourceRepos:
     - 'https://github.com/jannikseus/gitops-homelab.git'
     - 'https://charts.jetstack.io'
-    - 'oci://ghcr.io/n8n-io'
+    - 'oci://ghcr.io/n8n-io/n8n-helm-chart'
   destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
