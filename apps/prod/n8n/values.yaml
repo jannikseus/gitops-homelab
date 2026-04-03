@@ -1,11 +1,16 @@
 queueMode:
   enabled: false
 
+database:
+  type: sqlite
+  useExternal: false
+
+redis:
+  enabled: false
+  useExternal: false
+
 secretRefs:
   existingSecret: n8n-secrets
-
-main:
-  replicaCount: 1
 
 ingress:
   enabled: true
@@ -26,10 +31,13 @@ persistence:
   enabled: true
   size: 8Gi
 
+replicaCount: 1
+
 resources:
-  requests:
-    cpu: 100m
-    memory: 256Mi
-  limits:
-    cpu: 1000m
-    memory: 1Gi
+  main:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi
