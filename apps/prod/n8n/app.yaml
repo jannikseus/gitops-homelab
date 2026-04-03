@@ -10,7 +10,7 @@ spec:
     namespace: n8n
 
   sources:
-    - repoURL: oci://ghcr.io/n8n-io/n8n-helm-chart
+    - repoURL: ghcr.io/n8n-io/n8n-helm-chart
       chart: n8n
       targetRevision: 1.3.0
       path: .
