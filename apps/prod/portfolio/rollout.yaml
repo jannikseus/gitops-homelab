@@ -17,7 +17,7 @@ spec:
       containers:
         - name: portfolio
           image: ghcr.io/jannikseus/portfolio:sha-0692a533a9930c597d13b7a40a0e4bcab68e0be5
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 3000
