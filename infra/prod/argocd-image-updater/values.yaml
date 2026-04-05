@@ -1,0 +1,33 @@
+# helm values from here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-image-updater/values.yaml
+config:
+  # Image Updater reads Argo CD Application objects from the argocd namespace.
+  argocd.namespace: argocd
+  log.level: info
+
+  # Commit identity used once app-level annotations enable write-back method `git`.
+  git.user: argocd-image-updater
+  git.email: argocd-image-updater@jannikseus.tech
+
+  # GHCR access for private images (secret key format: "<username>:<token>").
+  registries:
+    - name: GitHub Container Registry
+      prefix: ghcr.io
+      api_url: https://ghcr.io
+      ping: yes
+      credentials: env:GHCR_REGISTRY_CREDS
+
+extraEnv:
+  - name: GHCR_REGISTRY_CREDS
+    valueFrom:
+      secretKeyRef:
+        name: argocd-image-updater-ghcr
+        key: creds
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
