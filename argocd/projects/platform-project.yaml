@@ -8,6 +8,7 @@ spec:
   sourceRepos:
     - 'https://github.com/jannikseus/gitops-homelab.git'
     - 'https://charts.jetstack.io'
+    - 'https://argoproj.github.io/argo-helm'
     - 'ghcr.io/n8n-io/n8n-helm-chart'
   destinations:
     - namespace: '*'
