@@ -5,4 +5,3 @@ resources:
   - apps.yaml
   - argo-rollouts.yaml
   - cert-manager.yaml
-  - argocd-image-updater.yaml
