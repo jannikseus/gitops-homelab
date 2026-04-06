@@ -11,6 +11,8 @@ spec:
         revision: main
         directories:
           - path: apps/*/*
+            exclude: true
+          - path: apps/prod/portfolio
   template:
     metadata:
       name: '{{ index .path.segments 2 }}-{{ index .path.segments 1 }}'
