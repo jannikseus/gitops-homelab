@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/jannikseus/portfolio:v0.0.7
+          image: ghcr.io/jannikseus/portfolio:v0.0.8
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
