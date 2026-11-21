@@ -236,6 +236,49 @@ Guidelines:
 
 ## Useful commands
 
+### Dashboards via a local Kubernetes tunnel
+
+#### Argo CD
+
+Forward the Argo CD API server from the cluster to your local machine:
+
+```bash
+kubectl port-forward -n argocd service/argocd-server 8080:443
+```
+
+Open `https://localhost:8080`. The browser will show a certificate warning when the
+self-signed or cluster-managed certificate is not trusted locally.
+
+The initial admin password can be read with:
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath='{.data.password}' | base64 --decode && echo
+```
+
+If the forward runs on a remote host or k3s host, create an SSH tunnel before
+opening the URL:
+
+```bash
+ssh -L 8080:localhost:8080 <user>@<k3s-host>
+```
+
+Keep the `kubectl port-forward` command running on the remote host or in an
+SSH session on that host.
+
+#### Argo Rollouts
+
+Install the Argo Rollouts `kubectl` plugin once, then start the dashboard from
+the local machine or a host with access to the cluster:
+
+```bash
+kubectl argo rollouts dashboard
+```
+
+Open `http://localhost:3100/rollouts`. This dashboard is provided by the
+`kubectl argo rollouts` plugin; it is not exposed by the controller installation
+in this repository.
+
 ### Applications
 ```bash
 kubectl get applications -n argocd
