@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/jannikseus/portfolio:v0.1.0
+          image: ghcr.io/jannikseus/portfolio:v0.2.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -46,4 +46,5 @@ spec:
       maxUnavailable: 0
       steps:
         - setWeight: 25
-        - pause: {}
+        - pause:
+            duration: 1m
